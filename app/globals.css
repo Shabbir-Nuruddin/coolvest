@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+/*
+  CoolVest — cold-chain label world.
+  Two inks: logger ink on crate white. One signal: label yellow.
+  Heat red appears only where heat is plotted.
+*/
+
+@theme {
+  --color-crate: #f2f4f3;
+  --color-crate-sunk: #e4e8e6;
+  --color-paper: #ffffff;
+  --color-ink: #0d1b24;
+  --color-ink-2: #3c4a53;
+  --color-ink-3: #56636b;
+  --color-rule: #0d1b24;
+  --color-hair: #c5ccc9;
+  --color-signal: #ffd400;
+  --color-signal-deep: #e6be00;
+  --color-heat: #c8341f;
+  --color-cold: #2f5f96;
+
+  --font-display: var(--font-barlow-c), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+
+  --ease-label: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    background: var(--color-crate);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px var(--color-signal);
+  }
+
+  html {
+    scrollbar-color: var(--color-ink) var(--color-crate-sunk);
+    scrollbar-width: thin;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-crate-sunk);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ink);
+    border: 2px solid var(--color-crate-sunk);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    letter-spacing: -0.005em;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .tnum {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* Die-cut label: ink rule, square corners, perforated edge option */
+  .label {
+    background: var(--color-paper);
+    border: 2px solid var(--color-rule);
+  }
+  .perf {
+    background-image: radial-gradient(circle, var(--color-crate) 3px, transparent 3.5px);
+    background-size: 14px 10px;
+    background-repeat: repeat-x;
+    height: 10px;
+  }
+
+  /* Diagonal hazard band used once per label */
+  .band {
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--color-ink) 0 10px,
+      var(--color-signal) 10px 20px
+    );
+  }
+
+  .btn-signal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 52px;
+    padding: 0 1.4rem;
+    background: var(--color-signal);
+    color: var(--color-ink);
+    border: 2px solid var(--color-ink);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition:
+      background-color 160ms var(--ease-label),
+      transform 160ms var(--ease-label);
+  }
+  .btn-signal:hover {
+    background: var(--color-signal-deep);
+  }
+  .btn-signal:active {
+    transform: translateY(1px);
+  }
+  .btn-signal:disabled {
+    background: var(--color-crate-sunk);
+    color: var(--color-ink-3);
+    border-color: var(--color-ink-3);
+    cursor: not-allowed;
+  }
+
+  .link-ink {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    text-decoration-color: var(--color-signal-deep);
+    transition: text-decoration-color 160ms var(--ease-label);
+  }
+  .link-ink:hover {
+    text-decoration-color: var(--color-ink);
+  }
+
+  .field {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.7rem 0.85rem;
+    background: var(--color-paper);
+    border: 0;
+    border-bottom: 2px solid var(--color-ink);
+    font: inherit;
+    color: var(--color-ink);
+    border-radius: 0;
+    transition: background-color 160ms var(--ease-label);
+  }
+  .field:hover {
+    background: #fbfbf7;
+  }
+  .field:focus-visible {
+    outline: none;
+    box-shadow: none;
+    background: #fff9d6;
+  }
+  .field[aria-invalid="true"] {
+    border-bottom-color: var(--color-heat);
+    background: #fdf1ee;
+  }
+  .field::placeholder {
+    color: var(--color-ink-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

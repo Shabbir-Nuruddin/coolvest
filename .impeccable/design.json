@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-01T19:32:41.547Z",
+  "title": "Design System: CoolVest",
+  "extensions": {
+    "colorMeta": {
+      "signal": {
+        "role": "primary",
+        "displayName": "Label Yellow",
+        "canonical": "#ffd400",
+        "oklch": "oklch(88.1% 0.181 94.0)",
+        "tonalRamp": [
+          "#0f0b00",
+          "#2d2402",
+          "#4f4109",
+          "#745f01",
+          "#9a8014",
+          "#c2a21e",
+          "#edc61e",
+          "#feefb8"
+        ]
+      },
+      "signal-deep": {
+        "role": "primary",
+        "displayName": "Deep Label Yellow",
+        "canonical": "#e6be00",
+        "oklch": "oklch(81.3% 0.167 93.5)",
+        "tonalRamp": [
+          "#100b00",
+          "#2e2402",
+          "#4f4109",
+          "#755f00",
+          "#9a8013",
+          "#c3a21d",
+          "#eec51c",
+          "#ffeeb7"
+        ]
+      },
+      "heat": {
+        "role": "secondary",
+        "displayName": "Heat Red",
+        "canonical": "#c8341f",
+        "oklch": "oklch(55.1% 0.188 31.3)",
+        "tonalRamp": [
+          "#1e0100",
+          "#490802",
+          "#7e0d00",
+          "#b31b03",
+          "#dc4832",
+          "#fe755e",
+          "#feb4a6",
+          "#ffe9e4"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Logger Ink",
+        "canonical": "#0d1b24",
+        "oklch": "oklch(21.4% 0.026 238.0)",
+        "tonalRamp": [
+          "#020d15",
+          "#192730",
+          "#35444f",
+          "#54646f",
+          "#748591",
+          "#96a8b4",
+          "#baccd9",
+          "#dff2ff"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "#3c4a53",
+        "oklch": "oklch(40.0% 0.023 236.4)",
+        "tonalRamp": [
+          "#030d14",
+          "#1a272f",
+          "#36444d",
+          "#55646d",
+          "#76858f",
+          "#98a8b2",
+          "#bbccd7",
+          "#e0f1fd"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Pale Ink",
+        "canonical": "#56636b",
+        "oklch": "oklch(49.2% 0.021 234.9)",
+        "tonalRamp": [
+          "#040d13",
+          "#1b272e",
+          "#38444b",
+          "#56636b",
+          "#77858d",
+          "#99a7b0",
+          "#bdccd5",
+          "#e2f1fb"
+        ]
+      },
+      "crate": {
+        "role": "neutral",
+        "displayName": "Crate White",
+        "canonical": "#f2f4f3",
+        "oklch": "oklch(96.5% 0.002 165.1)",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#242525",
+          "#414242",
+          "#606261",
+          "#818382",
+          "#a4a5a4",
+          "#c8cac9",
+          "#edefee"
+        ]
+      },
+      "crate-sunk": {
+        "role": "neutral",
+        "displayName": "Sunk Crate",
+        "canonical": "#e4e8e6",
+        "oklch": "oklch(92.7% 0.005 165.0)",
+        "tonalRamp": [
+          "#090c0b",
+          "#232624",
+          "#404341",
+          "#5f6260",
+          "#808381",
+          "#a2a6a4",
+          "#c6cac8",
+          "#ebefed"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Label Paper",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "hair": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#c5ccc9",
+        "oklch": "oklch(83.9% 0.009 168.7)",
+        "tonalRamp": [
+          "#080c0a",
+          "#212624",
+          "#3e4441",
+          "#5d6360",
+          "#7e8481",
+          "#a0a7a4",
+          "#c4cbc8",
+          "#e9f0ed"
+        ]
+      },
+      "pcm-cell": {
+        "role": "illustration",
+        "displayName": "PCM Cell Yellow",
+        "canonical": "#ffe14d",
+        "oklch": "oklch(90.9% 0.163 97.5)",
+        "tonalRamp": [
+          "#0f0b00",
+          "#2c2503",
+          "#4d4202",
+          "#716108",
+          "#96821b",
+          "#bda527",
+          "#e6c92a",
+          "#fff0a9"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only; uppercase condensed caps."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings in the left 7 columns of a section head; uppercase."
+      },
+      "readout": {
+        "displayName": "Readout",
+        "purpose": "Guidance figures and routine times; tabular numerals, units at 0.42em in pale ink."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "List, card and table-row titles; uppercase."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading copy at 60-68ch."
+      },
+      "body-lead": {
+        "displayName": "Lead",
+        "purpose": "Hero and quote intro paragraphs."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Figure captions, provenance notes and form notes."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Form labels, spec keys, table headers; uppercase."
+      },
+      "label-sm": {
+        "displayName": "Label Small",
+        "purpose": "Label field headers, handling-mark captions, chart markers, provenance tags; uppercase."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Signal buttons and the condensed secondary text link; uppercase."
+      },
+      "nav": {
+        "displayName": "Nav",
+        "purpose": "Header and footer section links; uppercase."
+      }
+    },
+    "shadows": [
+      {
+        "name": "focus-halo",
+        "value": "outline: 3px solid #0d1b24; outline-offset: 3px; box-shadow: 0 0 0 6px #ffd400",
+        "purpose": "Global :focus-visible ring. The only box-shadow in the system; no surface casts a shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-label",
+        "value": "cubic-bezier(0.2, 0.7, 0.1, 1)",
+        "purpose": "Default easing: button, link and field state changes at 160ms; peel plane lift at 700ms; heat fill fade at 900ms."
+      },
+      {
+        "name": "logger-draw",
+        "value": "clip-path 2200ms cubic-bezier(0.45, 0, 0.2, 1)",
+        "purpose": "Logger trace prints left to right once 35% of the chart is visible."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "durations 0.01ms; smooth scroll off; logger drawn immediately",
+        "purpose": "prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ],
+    "form": {
+      "rule": "2px solid #0d1b24",
+      "radius": "0px",
+      "hazardBand": "repeating-linear-gradient(-45deg, #0d1b24 0 10px, #ffd400 10px 20px); 10-12px tall; once per label",
+      "pictogramStroke": "3px, square cap, mitre join, 48-unit box, ink only"
+    },
+    "provenance": [
+      {
+        "asset": "public/product/security-worker.webp",
+        "status": "Illustrative photo, not a CoolVest wearer. Labelled on page. Also the Open Graph image."
+      },
+      {
+        "asset": "public/product/undershirt-front-back.webp",
+        "status": "Concept render, labelled. To be replaced by production samples."
+      },
+      {
+        "asset": "components/logger-strip.tsx (data)",
+        "status": "Illustrative, not measured. Labelled in the chart caption."
+      },
+      {
+        "asset": "components/liner-drawing.tsx",
+        "status": "Drawn to scale from design targets. Labelled in the figure caption."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Signal Button",
+      "kind": "button",
+      "refersTo": "button-signal",
+      "description": "The one primary action: Request a quote.",
+      "html": "<button class=\"ds-btn-signal\">Request a quote <svg viewBox=\"0 0 20 14\" width=\"20\" height=\"14\" aria-hidden=\"true\"><path d=\"M0 7h17M11 1l6 6-6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\"/></svg></button>",
+      "css": ".ds-btn-signal{display:inline-flex;align-items:center;gap:.75rem;min-height:52px;padding:0 1.4rem;background:#ffd400;color:#0d1b24;border:2px solid #0d1b24;border-radius:0;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background-color 160ms cubic-bezier(.2,.7,.1,1),transform 160ms cubic-bezier(.2,.7,.1,1)}.ds-btn-signal:hover{background:#e6be00}.ds-btn-signal:active{transform:translateY(1px)}.ds-btn-signal:focus-visible{outline:3px solid #0d1b24;outline-offset:3px;box-shadow:0 0 0 6px #ffd400}.ds-btn-signal:disabled{background:#e4e8e6;color:#56636b;border-color:#56636b;cursor:not-allowed}"
+    },
+    {
+      "name": "Ink Link",
+      "kind": "custom",
+      "refersTo": "link-ink",
+      "description": "Secondary action and inline source links.",
+      "html": "<a href=\"#\" class=\"ds-link-ink\">See how it works</a>",
+      "css": ".ds-link-ink{color:#0d1b24;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:19px;letter-spacing:.04em;text-transform:uppercase;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;text-decoration-color:#e6be00;transition:text-decoration-color 160ms cubic-bezier(.2,.7,.1,1)}.ds-link-ink:hover{text-decoration-color:#0d1b24}.ds-link-ink:focus-visible{outline:3px solid #0d1b24;outline-offset:3px;box-shadow:0 0 0 6px #ffd400}"
+    },
+    {
+      "name": "Label Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Underlined paper field inside a ruled form cell; error prints in heat red.",
+      "html": "<div class=\"ds-cell\"><label class=\"ds-lbl\" for=\"ds-f\">Your name</label><input id=\"ds-f\" class=\"ds-field\"><label class=\"ds-lbl ds-lbl2\" for=\"ds-g\">Email or phone</label><input id=\"ds-g\" class=\"ds-field\" aria-invalid=\"true\"><p class=\"ds-err\">Add an email or phone number.</p></div>",
+      "css": ".ds-cell{padding:20px;background:#fff;border:2px solid #0d1b24}.ds-lbl{display:block;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#0d1b24}.ds-lbl2{margin-top:16px}.ds-field{display:block;width:100%;min-height:48px;margin-top:8px;padding:.7rem .85rem;background:#fff;border:0;border-bottom:2px solid #0d1b24;border-radius:0;font:17px/1.6 Archivo,system-ui,sans-serif;color:#0d1b24;transition:background-color 160ms cubic-bezier(.2,.7,.1,1)}.ds-field:hover{background:#fbfbf7}.ds-field:focus-visible{outline:none;background:#fff9d6}.ds-field[aria-invalid=\"true\"]{border-bottom-color:#c8341f;background:#fdf1ee}.ds-err{margin:6px 0 0;font:500 14px/1.4 Archivo,system-ui,sans-serif;color:#c8341f}"
+    },
+    {
+      "name": "Sticky Header Nav",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Crate bar with wordmark, condensed caps links and compact quote button.",
+      "html": "<div class=\"ds-nav\"><span class=\"ds-wm\"><span class=\"ds-wm-a\">Cool</span><span class=\"ds-wm-b\">Vest</span></span><ul><li><a href=\"#\">The heat</a></li><li><a href=\"#\">How it works</a></li><li><a href=\"#\">Daily routine</a></li></ul><a href=\"#\" class=\"ds-nav-cta\">Request a quote</a></div>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px;padding:0 32px;background:rgba(242,244,243,.95);border-bottom:2px solid #0d1b24}.ds-wm{display:inline-flex;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:800;font-size:24px;line-height:1;letter-spacing:.02em;text-transform:uppercase}.ds-wm-a{background:#0d1b24;color:#f2f4f3;padding:4px 8px}.ds-wm-b{border:2px solid #0d1b24;color:#0d1b24;padding:2px 8px}.ds-nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;font-size:16px;letter-spacing:.06em;text-transform:uppercase}.ds-nav ul a{color:#3c4a53;text-decoration:none;transition:color 160ms}.ds-nav ul a:hover{color:#0d1b24}.ds-nav-cta{display:inline-flex;align-items:center;min-height:42px;padding:0 1rem;background:#ffd400;color:#0d1b24;border:2px solid #0d1b24;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:16px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none}.ds-nav-cta:hover{background:#e6be00}.ds-nav a:focus-visible{outline:3px solid #0d1b24;outline-offset:3px;box-shadow:0 0 0 6px #ffd400}"
+    },
+    {
+      "name": "Die-Cut Shipping Label",
+      "kind": "card",
+      "refersTo": "label-card",
+      "description": "The house container: ruled paper label with field header, yellow hold strip, hazard band, handling marks and lot/provenance line.",
+      "html": "<div class=\"ds-label\"><div class=\"ds-label-head\"><p class=\"ds-fh\">Deliver to</p><p class=\"ds-fv\">The person at gate 2</p><p class=\"ds-fs\">Shift 06:00–18:00</p></div><div class=\"ds-strip\">Holds at 28 °C</div><div class=\"ds-band\"></div><ul class=\"ds-marks\"><li><svg viewBox=\"0 0 48 48\" width=\"32\" height=\"32\" fill=\"none\" stroke=\"#0d1b24\" stroke-width=\"3\" stroke-linecap=\"square\" stroke-linejoin=\"miter\"><rect x=\"11\" y=\"5\" width=\"26\" height=\"38\"/><path d=\"M11 19h26M15 10v5M15 24v8\"/><path d=\"M28 25v12M23 28l10 6M33 28l-10 6\" stroke-width=\"2.4\"/></svg><span>Fridge charge</span></li><li><svg viewBox=\"0 0 48 48\" width=\"32\" height=\"32\" fill=\"none\" stroke=\"#0d1b24\" stroke-width=\"3\" stroke-linecap=\"square\" stroke-linejoin=\"miter\"><path d=\"M8 40h32\"/><path d=\"M17 33V12M11 18l6-6 6 6\"/><path d=\"M31 33V12M25 18l6-6 6 6\"/></svg><span>Mesh to skin</span></li></ul><p class=\"ds-lot\">Lot CV-01 · PCM 28 °C<br>Illustrative photo · not a CoolVest wearer</p></div>",
+      "css": ".ds-label{max-width:420px;background:#fff;border:2px solid #0d1b24;color:#0d1b24}.ds-label-head{padding:12px;border-bottom:2px solid #0d1b24}.ds-fh{margin:0;font:700 12px/1.25 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#56636b}.ds-fv{margin:0;font:700 20px/1.25 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;text-transform:uppercase}.ds-fs{margin:0;font:13px/1.4 Archivo,system-ui,sans-serif;color:#3c4a53;font-variant-numeric:tabular-nums}.ds-strip{background:#ffd400;padding:10px 12px;font:800 2rem/1 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;text-transform:uppercase;font-variant-numeric:tabular-nums}.ds-band{height:10px;background:repeating-linear-gradient(-45deg,#0d1b24 0 10px,#ffd400 10px 20px)}.ds-marks{display:grid;grid-template-columns:1fr 1fr;list-style:none;margin:0;padding:0;border-top:2px solid #0d1b24;border-bottom:2px solid #0d1b24}.ds-marks li{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px;font:700 12px/1.25 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;letter-spacing:.05em;text-transform:uppercase}.ds-marks li+li{border-left:2px solid #0d1b24}.ds-lot{margin:0;padding:10px 12px;font:600 12px/1.3 Archivo,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#3c4a53;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Provenance Tag",
+      "kind": "chip",
+      "refersTo": "provenance-tag",
+      "description": "Ink tag laid over an image well stating what the image is.",
+      "html": "<div class=\"ds-well\"><span class=\"ds-tag\">Illustrative photo</span></div>",
+      "css": ".ds-well{position:relative;height:140px;background:#e4e8e6;border:2px solid #0d1b24}.ds-tag{position:absolute;left:8px;bottom:8px;background:#0d1b24;color:#f2f4f3;padding:2px 8px;font:700 12px/1.4 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;letter-spacing:.08em;text-transform:uppercase}"
+    },
+    {
+      "name": "Ruled Readout Row",
+      "kind": "custom",
+      "refersTo": "readout",
+      "description": "Evidence row: tabular readout, explanation and source link between 2px ink rules.",
+      "html": "<div class=\"ds-row\"><p class=\"ds-num\">27.5 °C<span>WBGT</span></p><p class=\"ds-txt\">The heat-stress index at which guidance starts restricting heavy work.</p><a href=\"#\" class=\"ds-src\">CCOHS</a></div>",
+      "css": ".ds-row{display:grid;grid-template-columns:minmax(0,13rem) 1fr auto;gap:32px;align-items:baseline;padding:24px 0;border-top:2px solid #0d1b24;border-bottom:2px solid #0d1b24;color:#0d1b24}.ds-num{margin:0;font:800 3.2rem/1 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-variant-numeric:tabular-nums lining-nums}.ds-num span{margin-left:8px;font-size:.42em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#56636b}.ds-txt{margin:0;font:17px/1.6 Archivo,system-ui,sans-serif;color:#3c4a53}.ds-src{font:600 14px Archivo,system-ui,sans-serif;color:#0d1b24;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;text-decoration-color:#e6be00}.ds-src:hover{text-decoration-color:#0d1b24}.ds-src:focus-visible{outline:3px solid #0d1b24;outline-offset:3px;box-shadow:0 0 0 6px #ffd400}"
+    },
+    {
+      "name": "Routine Step Strip",
+      "kind": "custom",
+      "refersTo": "label-card",
+      "description": "Ruled cold-chain routine; the current step takes the signal fill.",
+      "html": "<ol class=\"ds-steps\"><li><p class=\"ds-t\">06:00</p><p class=\"ds-h\">Set A goes in</p></li><li class=\"ds-on\"><p class=\"ds-t\">13:00</p><p class=\"ds-h\">Swap to set B</p></li><li><p class=\"ds-t\">20:00</p><p class=\"ds-h\">Into the fridge</p></li></ol>",
+      "css": ".ds-steps{display:grid;grid-template-columns:repeat(3,1fr);margin:0;padding:0;list-style:none;background:#fff;border:2px solid #0d1b24;color:#0d1b24}.ds-steps li{padding:20px}.ds-steps li+li{border-left:2px solid #0d1b24}.ds-steps li.ds-on{background:#ffd400}.ds-t{margin:0;font:800 2.6rem/1 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-variant-numeric:tabular-nums}.ds-h{margin:16px 0 0;font:700 22px/1.25 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;text-transform:uppercase}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Cold-Chain Label",
+    "overview": "CoolVest is a cold-chain object worn by a person: charged cold, carried, swapped at midday. The system dresses every surface as the paperwork of that chain: die-cut shipping labels, temperature-logger strips, handling sheets with ISO-780-style marks, lot barcodes. Two inks do almost all the work, logger ink on insulated-crate white, and a single label yellow carries action and the 28 °C hold line. The worker stays in frame; the label is addressed to them.\n\nDensity is that of a well-set consignment document: heavy 2px ink rules, square corners, condensed caps for anything a handler would read at arm's length, a plain grotesk for everything a buyer reads closely, tabular numerals for every figure. Nothing floats, glows or rounds off. Sections alternate crate and crate-sunk grounds, with one full ink section (the employer table) and an ink footer.\n\nStates print themselves rather than animate for show: the logger trace draws across the shift on entry, the quote form's status prints as a new label line, the layer peel lifts one physical plane at a time. All of it is skippable under reduced motion. The page rejects the cooling category's ice-blue product-shot-plus-feature-icons layout, and the brand rejects tactical, military, sportswear and fashion styling.",
+    "keyCharacteristics": [
+      "Two inks (ink on crate/paper) plus one signal yellow; heat red only where heat or an alarm is shown.",
+      "Every container is a ruled label: 2px ink border, 0px radius, no shadow.",
+      "Barlow Condensed caps for display, titles, labels and buttons; Archivo sentence case for reading.",
+      "Tabular numerals on all data: times, temperatures, quantities, lot codes.",
+      "Drawn, not decorated: SVG pictograms, barcodes, logger charts and construction drawings in single-weight ink.",
+      "Every shipped raster and every illustrative dataset carries a visible provenance line."
+    ],
+    "rules": [
+      {
+        "name": "The Two-Ink Rule",
+        "body": "Structure is logger ink on crate or paper. Colour is earned by meaning, never by decoration; a new surface that needs a third neutral is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Signal Rule",
+        "body": "Label yellow means \"act here\" or \"this is the 28 °C line / the current step\". It is never a background wash, a section fill or an ornament. If two yellows compete in one viewport, one of them is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Heat-Is-Data Rule",
+        "body": "Heat red appears only on plotted heat and on alarm states. It never marks a brand moment, a heading or a CTA.",
+        "section": "colors"
+      },
+      {
+        "name": "The Condensed Caps Rule",
+        "body": "Barlow Condensed is always uppercase; Archivo is never uppercase except the small tabular lot/provenance lines on labels. Headings use `text-wrap: balance`, paragraphs `pretty`.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Data Rule",
+        "body": "Any figure that is data (time, temperature, quantity, lot code, step number) is set with tabular lining numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Label Rule",
+        "body": "Labels sit on the crate, they do not hover over it. No drop shadows, no offset shadows, no glow; if something needs separation, rule it.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Band-Once Rule",
+        "body": "The hazard band appears at most once per label (hero label, kit label, quote form, footer top). It is a closure, not a divider.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do build every new container as a die-cut label: paper face, 2px ink rule, 0px radius, internal 2px ink cell rules.",
+      "Do keep label yellow (#ffd400) for action, the 28 °C line and the current step only.",
+      "Do restrict heat red (#c8341f) to plotted heat and alarm/error states.",
+      "Do set headings, labels, buttons and nav in Barlow Condensed caps, and reading copy in Archivo sentence case at 17px / 1.6.",
+      "Do set every figure with tabular numerals.",
+      "Do draw icons, barcodes and diagrams as single-weight ink SVG in the ISO-780 manner, each stating a real handling rule.",
+      "Do caption every raster, render and illustrative dataset with its provenance, in label type, on the surface where it appears.",
+      "Do let states print themselves (draw-on-entry, status as a new label line) on the label ease (cubic-bezier(0.2, 0.7, 0.1, 1)), and respect reduced motion.",
+      "Do mark specs as design targets wherever they appear.",
+      "Do refer to the wearer with they/them."
+    ],
+    "donts": [
+      "Don't use rounded corners, drop shadows, offset shadows or glows on any surface.",
+      "Don't use ice-blue, frost or product-shot-plus-feature-icon layouts, or tactical, military, sportswear or fashion styling.",
+      "Don't use yellow as a section wash or decorative fill, or red as a brand colour.",
+      "Don't add a hazard band more than once per label or use it as a section divider.",
+      "Don't show a price; the only commercial action is \"Request a quote\".",
+      "Don't show wear-duration or temperature-drop figures, testimonials, ratings, customer logos or certification badges until independent testing exists.",
+      "Don't present a stock, generated or concept image as a CoolVest wearer or a production sample."
+    ]
+  }
+}

@@ -1,0 +1,130 @@
+function frac(n: number) {
+  return n - Math.floor(n);
+}
+
+const SEGMENTS = Array.from({ length: 78 }).map((_, i) => {
+  const a = frac(Math.sin((i + 1) * 12.9898) * 43758.5453);
+  const b = frac(Math.sin((i + 1) * 78.233) * 12345.6789);
+  const c = frac(Math.sin((i + 1) * 39.425) * 24634.6345);
+  const x1 = 107 + a * 86;
+  const y1 = 45 + b * 134;
+  const len = 5 + c * 9;
+  const dy = (a - 0.5) * 3.2;
+  return { x1, y1, x2: x1 + len, y2: y1 + dy };
+});
+
+export function LinerSheet() {
+  return (
+    <div className="relative border border-hairline bg-surface">
+      <svg viewBox="0 0 320 240" className="w-full text-ink" role="img">
+        <title>
+          CoolVest phase-change liner, laid flat, back-weighted coverage
+        </title>
+        <g stroke="currentColor" strokeWidth="0.6" opacity="0.3">
+          <path d="M20 12 h6 M23 9 v6" />
+          <path d="M300 12 h-6 M297 9 v6" />
+          <path d="M20 228 h6 M23 225 v6" />
+          <path d="M300 228 h-6 M297 225 v6" />
+        </g>
+
+        {/* back-weighted region */}
+        <path
+          d="M108 32 q52 -12 104 0 l18 22 -14 20 v118 a4 4 0 0 1 -4 4 H108 a4 4 0 0 1 -4 -4 V74 l-14 -20 z"
+          fill="currentColor"
+          fillOpacity="0.05"
+          stroke="currentColor"
+          strokeWidth="1.25"
+          strokeLinejoin="round"
+        />
+
+        {/* upper chest region, lighter wash */}
+        <path
+          d="M110 74 q50 -10 100 0 l-2 34 q-48 8 -96 0 z"
+          fill="currentColor"
+          fillOpacity="0.03"
+          stroke="currentColor"
+          strokeWidth="0.75"
+          opacity="0.6"
+        />
+
+        {/* generic cell texture - deliberately non-specific: no rows, no columns, no countable lattice */}
+        <defs>
+          <clipPath id="liner-panel">
+            <rect x="102" y="38" width="122" height="156" />
+          </clipPath>
+        </defs>
+        <g
+          stroke="currentColor"
+          strokeWidth="0.4"
+          opacity="0.26"
+          clipPath="url(#liner-panel)"
+        >
+          {SEGMENTS.map((s, i) => (
+            <line
+              key={i}
+              x1={s.x1}
+              y1={s.y1}
+              x2={s.x2}
+              y2={s.y2}
+              strokeDasharray="3 2"
+            />
+          ))}
+        </g>
+
+        <g color="currentColor" opacity="0.85">
+          <line x1="160" y1="70" x2="262" y2="70" stroke="currentColor" strokeWidth="0.75" />
+          <circle cx="160" cy="70" r="1.6" fill="currentColor" />
+          <text
+            x="268"
+            y="73"
+            fill="currentColor"
+            fontSize="7.5"
+            letterSpacing="0.6"
+            fontFamily="var(--font-mono)"
+          >
+            CHEST
+          </text>
+
+          <line x1="150" y1="150" x2="44" y2="150" stroke="currentColor" strokeWidth="0.75" />
+          <circle cx="150" cy="150" r="1.6" fill="currentColor" />
+          <text
+            x="38"
+            y="153"
+            fill="currentColor"
+            fontSize="7.5"
+            letterSpacing="0.6"
+            fontFamily="var(--font-mono)"
+            textAnchor="end"
+          >
+            BACK
+          </text>
+        </g>
+
+        <text
+          x="38"
+          y="24"
+          fill="currentColor"
+          fontSize="7.5"
+          letterSpacing="0.6"
+          fontFamily="var(--font-mono)"
+          opacity="0.6"
+        >
+          ONE CONTINUOUS PANEL
+        </text>
+
+        <text
+          x="302"
+          y="226"
+          fill="currentColor"
+          fontSize="7.5"
+          letterSpacing="0.6"
+          fontFamily="var(--font-mono)"
+          textAnchor="end"
+          opacity="0.6"
+        >
+          CV-03 / LINER
+        </text>
+      </svg>
+    </div>
+  );
+}

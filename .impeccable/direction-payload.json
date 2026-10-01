@@ -1,0 +1,96 @@
+{
+  "title": "Choose the visual world for CoolVest",
+  "question": "This is the direction for the CoolVest sales site. Keep it, adopt an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Cold Chain",
+      "kicker": "THE ROLL",
+      "lineage": "Cold-chain shipping labels, ISO 780 handling pictograms and temperature-logger strip charts",
+      "thesis": "Treat CoolVest as a cold-chain object: charge it cold, carry it, swap it at midday. The whole site reads like the label, the logger and the handling sheet.",
+      "palette": ["#F3F5F4", "#0D1B24", "#FFD400", "#E8412C", "#3A6FA8"],
+      "materials": ["insulated-crate white", "logger chart paper", "die-cut handling labels", "printed temperature line"],
+      "viewport": "A big ruled shipping label as the hero: CoolVest, 'Keep below 28 °C', handling pictograms, and a logger strip printing a shift's temperature line. A 'Request a quote' action sits in the label's address block.",
+      "risk": "It could look like pharmaceutical packaging if the worker never appears. The guard photo and the uniform have to carry the human side.",
+      "raised": [
+        {"from": "Multiplane cel dawn", "raise": "The layer stack scrolls as six physical planes: the uniform lifts away to show the shirt, then the liner, then the mesh."},
+        {"from": "Noir one-sheet", "raise": "Two-ink discipline: logger ink plus one signal colour, never a scatter of accents."},
+        {"from": "Phosphor terminal", "raise": "States print themselves: the 28 °C logger line draws as you scroll, and form status prints as label lines."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Heatwave Bulletin",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "IMD heat-wave warning maps and colour-coded yellow, orange and red alert bulletins",
+      "thesis": "The site opens as today's heat-alert bulletin for India and the Gulf, then CoolVest answers it with a system for employers.",
+      "palette": ["#FFF8E6", "#1A1A1A", "#F2B705", "#E86A17", "#C21F1F"],
+      "materials": ["alert-colour map fields", "bulletin typesetting", "district grids"],
+      "viewport": "A full-bleed alert map in orange and red with the bulletin headline, and the CoolVest system answering in a ruled panel beside it.",
+      "risk": "It's the more familiar choice: heat-themed oranges are where many cooling brands land, and fear-led framing can read as alarmist."
+    },
+    {
+      "id": "challenger-multiplane",
+      "label": "Multiplane Layers",
+      "verdict": "competitive",
+      "lineage": "Multiplane cel-animation camera",
+      "thesis": "The garment is literally layers, so the site becomes a camera sinking through uniform, shirt, liner and mesh.",
+      "palette": ["#1E2B33", "#7A8C99", "#BFD3E0", "#F2A541"],
+      "materials": ["stacked painted planes", "rack-focus blur"],
+      "viewport": "A full-bleed uniformed worker, with planes peeling back on scroll to show each layer.",
+      "case": "Strongest on product clarity: it shows 'invisible under the uniform'. It's weaker on audience: painterly gouache doesn't speak to procurement.",
+      "risk": "Heavy on assets. Without real painted plates it turns into generic parallax."
+    },
+    {
+      "id": "challenger-noir",
+      "label": "Noir One-Sheet",
+      "verdict": "declined",
+      "lineage": "Postwar duotone film posters",
+      "thesis": "A guard small at noon, with the heat cast as a huge hard shadow.",
+      "palette": ["#111111", "#E0A526", "#F1E7D0"],
+      "materials": ["duotone ink", "cast shadow"],
+      "viewport": "A small figure, a huge shadow and a condensed title.",
+      "case": "Dramatic, but buyers don't recognise themselves in a film poster.",
+      "risk": "Reads as entertainment.",
+      "kept": "Total two-ink commitment."
+    },
+    {
+      "id": "challenger-terminal",
+      "label": "Phosphor Terminal",
+      "verdict": "declined",
+      "lineage": "Green-phosphor machine-room terminals",
+      "thesis": "The product as a printed transcript.",
+      "palette": ["#050805", "#33FF66", "#145A28"],
+      "materials": ["scanline glow"],
+      "viewport": "An 80-column transcript.",
+      "case": "Loses on both: a garment isn't software.",
+      "risk": "Tech costume.",
+      "kept": "States print themselves."
+    },
+    {
+      "id": "challenger-zine",
+      "label": "Punk Paste-up",
+      "verdict": "declined",
+      "lineage": "Xeroxed punk zines",
+      "thesis": "A ransom-note flyer for heat.",
+      "palette": ["#111111", "#FFFFFF", "#FF3EA5"],
+      "materials": ["toner grit", "torn paper"],
+      "viewport": "A crooked paste-up spread.",
+      "case": "Undermines B2B trust.",
+      "risk": "Reads as unserious.",
+      "kept": "Labels slap down, they don't fade in."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A clean product site in the style of Ergodyne or Techniche, executed with full craft.",
+    "palette": ["#FFFFFF", "#0F172A", "#0EA5E9"],
+    "materials": ["clean grid", "product photography", "ice-blue accents"],
+    "viewport": "A product photo, a headline, feature icons and a quote button.",
+    "risk": "Looks like every cooling-vest brand by design."
+  },
+  "steer": true
+}

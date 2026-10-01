@@ -1,0 +1,91 @@
+function Callout({
+  x1,
+  y1,
+  x2,
+  label,
+  align = "right",
+}: {
+  x1: number;
+  y1: number;
+  x2: number;
+  label: string;
+  align?: "left" | "right";
+}) {
+  const textX = align === "right" ? x2 + 6 : x2 - 6;
+  return (
+    <g>
+      <path
+        d={`M${x1} ${y1} L${x2} ${y1}`}
+        stroke="currentColor"
+        strokeWidth="0.75"
+      />
+      <circle cx={x1} cy={y1} r="1.6" fill="currentColor" />
+      <text
+        x={textX}
+        y={y1 + 3}
+        fill="currentColor"
+        fontSize="7.5"
+        letterSpacing="0.6"
+        fontFamily="var(--font-mono)"
+        textAnchor={align === "right" ? "start" : "end"}
+      >
+        {label}
+      </text>
+    </g>
+  );
+}
+
+export function UndershirtSheet() {
+  return (
+    <div className="relative border border-hairline bg-surface">
+      <svg viewBox="0 0 320 240" className="w-full text-ink" role="img">
+        <title>CoolVest undershirt, flat front elevation</title>
+        <g stroke="currentColor" strokeWidth="0.6" opacity="0.3">
+          <path d="M20 12 h6 M23 9 v6" />
+          <path d="M300 12 h-6 M297 9 v6" />
+          <path d="M20 228 h6 M23 225 v6" />
+          <path d="M300 228 h-6 M297 225 v6" />
+        </g>
+
+        <path
+          d="M118 44 q42 -14 84 0 l26 20 -18 26 -14 -8 v110 a4 4 0 0 1 -4 4 H128 a4 4 0 0 1 -4 -4 V82 l-14 8 -18 -26 z"
+          fill="#FFFFFF"
+          stroke="currentColor"
+          strokeWidth="1.25"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M132 46 q28 14 56 0"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.25"
+        />
+        <path
+          d="M104 66 l18 26 M216 66 l-18 26"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.25"
+        />
+
+        <g color="currentColor" opacity="0.85">
+          <Callout x1={160} y1={44} x2={262} label="NECK BINDING" />
+          <Callout x1={110} y1={82} x2={44} label="ARMHOLE" align="left" />
+          <Callout x1={160} y1={196} x2={262} label="HEM" />
+        </g>
+
+        <text
+          x="302"
+          y="226"
+          fill="currentColor"
+          fontSize="7.5"
+          letterSpacing="0.6"
+          fontFamily="var(--font-mono)"
+          textAnchor="end"
+          opacity="0.6"
+        >
+          CV-02 / UNDERSHIRT
+        </text>
+      </svg>
+    </div>
+  );
+}

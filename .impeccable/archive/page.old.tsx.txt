@@ -1,0 +1,558 @@
+import { LayerReveal } from "@/components/layer-reveal";
+import { UndershirtSheet } from "@/components/undershirt-sheet";
+import { LinerSheet } from "@/components/liner-sheet";
+
+// Supply the real company address before this page is shown to anyone.
+// While empty, the contact block renders a visible pending note instead of an
+// invented address.
+const CONTACT_EMAIL = "";
+
+const RULES = [
+  {
+    part: "CV-01",
+    label: "No electronics",
+    body: "No fan, no battery, no charging, no motor. Nothing to fail on shift and nothing to declare at a gate.",
+  },
+  {
+    part: "CV-02",
+    label: "One continuous liner",
+    body: "A single removable phase-change panel, not a set of loose packs. It comes out with the shirt and goes back in one motion.",
+  },
+  {
+    part: "CV-03",
+    label: "Worn under your own uniform",
+    body: "Sleeveless, so it sits against skin without bulk at the arms. You keep the uniform you already issue.",
+  },
+];
+
+const BUYERS = [
+  {
+    segment: "Security contracting",
+    body: "Officers posted at a fixed point for a full shift, in uniform, with no option to move into shade.",
+  },
+  {
+    segment: "Construction and site work",
+    body: "Crews working to a programme where the hot part of the day cannot simply be skipped.",
+  },
+  {
+    segment: "Facilities and industrial",
+    body: "Sites that already hold a welfare budget, a muster point and a written heat procedure.",
+  },
+  {
+    segment: "Logistics and yard work",
+    body: "Loading, marshalling and delivery roles that alternate between a vehicle and an open yard.",
+  },
+];
+
+const PHYSICS = [
+  {
+    term: "Phase change",
+    body: "A phase-change material absorbs heat while it changes state, and it absorbs that heat without itself getting warmer. The same heat comes back out when it changes back.",
+  },
+  {
+    term: "Latent heat",
+    body: "The energy taken in during that change of state is called latent heat. It is stored and released, not simply soaked up and lost.",
+  },
+  {
+    term: "A limit, not a loophole",
+    body: "A phase-change material does not make you colder than its transition temperature. It holds the local temperature near that point for as long as the material lasts, then it stops.",
+  },
+];
+
+const RESET = [
+  {
+    step: "01",
+    title: "The liner does not need heat added. It needs heat taken away.",
+    body: "Wearing the vest warms the material until it has absorbed what it can and changed into liquid. To be usable again it has to change back to solid, and that needs a temperature below its crystallisation point. Heat is what spent it. Heat is not what restores it.",
+  },
+  {
+    step: "02",
+    title: "A hot car, a hot shower and body heat all work against you.",
+    body: "Any environment above the transition temperature keeps pushing the material toward liquid. A parked vehicle in hot weather, hot water and body heat are all on the wrong side of that line. This is why some manufacturers print a warning against leaving cooling packs in a car.",
+  },
+  {
+    step: "03",
+    title: "Every method in commercial use needs ice, a freezer or a fridge.",
+    body: "There is no chemical route around this. Changing the material does not remove the requirement for somewhere cold, and no manufacturer we have read describes one.",
+  },
+  {
+    step: "04",
+    title: "The one honest exception is genuinely conditional.",
+    body: "Resetting by simply sitting in cool air does work, but only where the air is genuinely cold. Published manufacturer guidance sets out preconditions of 21 °C and 22 °C ambient. In a hot climate that will not happen on any timescale a shift pattern can use, and we would rather say so than imply otherwise.",
+  },
+];
+
+const TESTS = [
+  {
+    step: "01",
+    title: "Supplier quotes",
+    body: "A prerequisite, not a test. Nothing can be built until a real manufacturer prices the material and the garment, and no supplier has been contacted yet.",
+  },
+  {
+    step: "02",
+    title: "Bench characterisation",
+    body: "Sealed cells taken to a full liquid state, held against a simulated skin surface, measuring surface temperature over time and whether the material turns back. Cheap, no worker needed, and it can support the product or kill it in a week.",
+  },
+  {
+    step: "03",
+    title: "Durability cycling",
+    body: "Repeated cold-cycling and wash cycles, with capacity and seal integrity measured before and after. If capacity collapses, this stops being a garment and becomes a consumable, which changes the whole business.",
+  },
+  {
+    step: "04",
+    title: "Segment interviews",
+    body: "The people who wear it and the people who sign the purchase order, recorded separately. A price a worker will pay and a price an employer will pay are two different answers, and both are useful.",
+  },
+  {
+    step: "05",
+    title: "Wear trial",
+    body: "Prototypes issued to real workers for a run of real shifts. The metric that counts is whether they are still wearing it unprompted at the end of the week.",
+  },
+  {
+    step: "06",
+    title: "Price commitment",
+    body: "A firm commitment against a quoted price, from the people who actually buy. Opinions do not count.",
+  },
+];
+
+const HEAT_LIMITS = [
+  {
+    figure: "27.5",
+    unit: "°C WBGT, acclimatised",
+    body: "The first figure in ACGIH's heavy-work column, where a 75/25 work-rest split first becomes available. ACGIH permits no continuous heavy work at any WBGT value.",
+  },
+  {
+    figure: "20 / 40",
+    unit: "minutes",
+    body: "NIOSH's recommended work-rest split for heavy work at 40 degrees Celsius. Roughly a third of the hour is spent working.",
+  },
+  {
+    figure: "7–14",
+    unit: "days",
+    body: "The time a new worker needs to become acclimatised. New workers start at no more than a fifth of normal exposure on day one.",
+  },
+];
+
+const TRIALS = [
+  {
+    finding: "The one independently measured result that favoured phase change",
+    body: "In a NIOSH field trial at 35 and 40 degrees Celsius, a frozen-polymer vest held the wearer's heat storage rate to about half of the no-cooling control, against about 55 per cent for the air-cooled and water-cooled vests beside it. Five subjects, two hours. It is the only pro-phase-change number in this section and it is a small trial.",
+  },
+  {
+    finding: "Phase-change vests start strong and fade early",
+    body: "In eight-hour manikin trials across four vest types, phase-change vests produced high cooling power at the start, comparable to liquid-cooled systems, but the output fell sharply and did not last longer than the alternatives.",
+  },
+  {
+    finding: "A vest is not a treatment for an over-heated worker",
+    body: "In a trial on mildly hyperthermic subjects, a cooling vest did not reduce core temperature. Ice-water immersion remained the method that cooled people fastest.",
+  },
+  {
+    finding: "The complaint is always the same",
+    body: "In a survey of workers using cooling vests, the most common complaints, in order, were short cooling time, weight, inflexibility and difficult cleaning. Duration was first.",
+  },
+];
+
+const SOURCES = [
+  "ACGIH, TLV for Heat Stress and Heat Strain (2026 TLVs), as reproduced by CCOHS Canada and IHSA Ontario",
+  "NIOSH, Occupational Exposure to Heat and Hot Environments — DHHS (NIOSH) 2017-127, work/rest schedules",
+  "NIOSH, acclimatisation guidance for new and returning workers",
+  "NIOSH field trial of cooling garments at 35 and 40 degrees Celsius — five subjects, two hours",
+  "Peer-reviewed eight-hour manikin evaluation of four personal cooling systems, 2024",
+  "Occupational Safety and Health Council (Hong Kong) worker survey on cooling vests",
+  "Voluntary heat illness prevention plan guidance on cooling vests as an alternative control measure",
+];
+
+const SITE_QUESTIONS = [
+  "Shift pattern: hours, rotation, and how much of the shift is spent outdoors.",
+  "Site conditions: where the work happens and what the hot part of the year looks like.",
+  "Cold storage: whether a worker can reach a fridge or freezer between shifts. This one decides more than any other.",
+  "Headcount and uniform: how many people, and what they wear today.",
+];
+
+export default function Page() {
+  return (
+    <main>
+      <header className="border-b border-hairline bg-surface">
+        <div className="container-page flex h-16 items-center justify-between">
+          <span className="text-[15px] font-medium tracking-tight">CoolVest</span>
+          <div className="flex items-center gap-7">
+            <nav className="hidden items-center gap-7 md:flex">
+              <a className="meta transition-colors hover:text-ink" href="#product">
+                Product
+              </a>
+              <a className="meta transition-colors hover:text-ink" href="#how">
+                How it works
+              </a>
+              <a className="meta transition-colors hover:text-ink" href="#testing">
+                Testing
+              </a>
+              <a className="meta transition-colors hover:text-ink" href="#evidence">
+                Evidence
+              </a>
+            </nav>
+            <a
+              className="rounded-token bg-navy px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-navy-hover"
+              href="#contact"
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <section className="border-b border-hairline">
+        <div className="container-page grid items-center gap-14 py-20 md:grid-cols-2 md:py-24">
+          <div>
+            <p className="meta">Section 01 / Concept stage</p>
+            <h1 className="mt-6 text-[34px] font-medium leading-[1.15] tracking-[-0.02em] md:text-5xl">
+              Your roster already bends around the heat.
+            </h1>
+            <p className="mt-7 max-w-[46ch] text-[17px] leading-relaxed text-ink-muted">
+              On a hot shift the levers an employer has are shade, water,
+              rotation and shorter hours. CoolVest is a cooling layer worn
+              under the uniform you already issue — no fan, no battery, nothing
+              to charge.
+            </p>
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <a
+                className="rounded-token bg-navy px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-navy-hover"
+                href="#contact"
+              >
+                Talk to us about a pilot
+              </a>
+              <a
+                className="rounded-token border border-hairline bg-surface px-5 py-2.5 text-[14px] font-medium transition-colors hover:bg-surface-sunk"
+                href="#how"
+              >
+                How it works
+              </a>
+            </div>
+          </div>
+          <LayerReveal />
+        </div>
+      </section>
+
+      <section id="problem" className="border-b border-hairline bg-surface-sunk">
+        <div className="container-page py-[72px] md:py-[112px]">
+          <div className="max-w-[62ch]">
+            <p className="meta">Section 02 / The problem</p>
+            <h2 className="mt-5 text-[28px] font-medium leading-tight tracking-[-0.015em] md:text-[40px]">
+              Heat is already written into your rosters.
+            </h2>
+            <p className="mt-6 text-[16px] leading-relaxed text-ink-muted">
+              Every figure below is published by a public body and cited at the
+              foot of this page. None of it is a measurement of CoolVest — it
+              is the problem the garment is being designed against.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-px border border-hairline bg-hairline md:grid-cols-3">
+            {HEAT_LIMITS.map((h) => (
+              <div key={h.figure} className="bg-surface p-7">
+                <p className="text-[30px] font-medium leading-none tracking-[-0.02em]">
+                  {h.figure}
+                </p>
+                <p className="meta mt-3">{h.unit}</p>
+                <p className="mt-4 text-[15px] leading-relaxed text-ink-muted">
+                  {h.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 max-w-[68ch] border-l-2 border-accent pl-5 text-[15px] leading-relaxed text-ink">
+            Published guidance places a cooling vest in the same category as
+            shade: an alternative control measure, and an adjunct to work-rest
+            scheduling rather than a substitute for it. No garment changes that
+            order, and nothing on this page should be read as if it did.
+          </p>
+
+          <div className="mt-16 max-w-[62ch]">
+            <p className="meta">Who it is for</p>
+            <h3 className="mt-4 text-[19px] font-medium">
+              Four kinds of shift this is aimed at
+            </h3>
+          </div>
+          <div className="mt-8 grid gap-px border border-hairline bg-hairline md:grid-cols-2">
+            {BUYERS.map((b) => (
+              <div key={b.segment} className="bg-surface p-7">
+                <h4 className="text-[16px] font-medium">{b.segment}</h4>
+                <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
+                  {b.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="product" className="border-b border-hairline">
+        <div className="container-page py-[72px] md:py-[112px]">
+          <p className="meta">Section 03 / The garment</p>
+          <h2 className="mt-5 max-w-[20ch] text-[28px] font-medium leading-tight tracking-[-0.015em] md:text-[40px]">
+            One garment, three fixed decisions.
+          </h2>
+
+          <div className="mt-14 grid gap-12 md:grid-cols-2">
+            <div>
+              <UndershirtSheet />
+              <p className="mt-5 max-w-[54ch] text-[14px] leading-relaxed text-ink-muted">
+                The undershirt, flat front elevation. Bound neck, bound
+                armholes, straight hem. Sleeveless so it carries no bulk under
+                the short sleeve of a work shirt.
+              </p>
+            </div>
+
+            <div>
+              <LinerSheet />
+              <p className="mt-5 max-w-[54ch] text-[14px] leading-relaxed text-ink-muted">
+                The liner, laid flat, as one continuous panel. Coverage is
+                weighted toward the back. The internal cell pattern shown is
+                generic — the actual cell count and size are not yet decided,
+                so the drawing deliberately does not state them.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 grid gap-px border border-hairline bg-hairline md:grid-cols-3">
+            {RULES.map((r) => (
+              <div key={r.part} className="bg-surface p-7">
+                <p className="meta">{r.part}</p>
+                <h3 className="mt-4 text-[17px] font-medium">{r.label}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
+                  {r.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 grid gap-4 md:grid-cols-[1.15fr_0.85fr]">
+            <figure className="overflow-hidden border border-hairline bg-surface">
+              <img
+                src="/product/security-worker.webp"
+                alt="Security worker in a short-sleeve uniform outdoors on shift"
+                width={1024}
+                height={1536}
+                loading="lazy"
+                decoding="async"
+                className="h-full min-h-[320px] w-full object-cover object-center"
+              />
+              <figcaption className="border-t border-hairline px-5 py-4 text-[13px] leading-relaxed text-ink-muted">
+                The intended use case: a cooling layer under a uniform already
+                worn on shift. The image is illustrative, not a product test.
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden border border-hairline bg-surface">
+              <img
+                src="/product/layer-board.webp"
+                alt="Exploded view of skin, mesh, PCM liner, shirt fabric and uniform"
+                width={1536}
+                height={1024}
+                loading="lazy"
+                decoding="async"
+                className="h-full min-h-[320px] w-full object-cover object-center"
+              />
+              <figcaption className="border-t border-hairline px-5 py-4 text-[13px] leading-relaxed text-ink-muted">
+                Intended layer order. The liner construction, transition
+                temperature and wash life remain engineering questions.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" className="border-b border-hairline bg-surface-sunk">
+        <div className="container-page py-[72px] md:py-[112px]">
+          <div className="max-w-[62ch]">
+            <p className="meta">Section 04 / How it works</p>
+            <h2 className="mt-5 text-[28px] font-medium leading-tight tracking-[-0.015em] md:text-[40px]">
+              What a phase-change material actually does
+            </h2>
+            <p className="mt-6 text-[16px] leading-relaxed text-ink-muted">
+              Most cooling products either push air or evaporate water. A
+              phase-change material does neither. It stores heat as it changes
+              state. The three facts below are textbook properties of the
+              material class, not claims about this product.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-px border border-hairline bg-hairline md:grid-cols-3">
+            {PHYSICS.map((f) => (
+              <div key={f.term} className="bg-surface p-7">
+                <h3 className="text-[17px] font-medium">{f.term}</h3>
+                <p className="mt-3.5 text-[15px] leading-relaxed text-ink-muted">
+                  {f.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="reset" className="border-b border-hairline">
+        <div className="container-page py-[72px] md:py-[112px]">
+          <div className="max-w-[68ch]">
+            <p className="meta">Section 05 / Between shifts</p>
+            <h2 className="mt-5 text-[28px] font-medium leading-tight tracking-[-0.015em] md:text-[40px]">
+              What your site needs between shifts
+            </h2>
+            <p className="mt-6 text-[16px] leading-relaxed text-ink-muted">
+              Resetting the liner is the one part of this project that most
+              people get backwards, and it is the question that decides whether
+              the product is workable at your site. It is better to know it now
+              than after a pilot.
+            </p>
+            <div className="mt-8 grid gap-px border border-hairline bg-hairline">
+              {RESET.map((r) => (
+                <div key={r.step} className="bg-surface p-7">
+                  <p className="meta">{r.step}</p>
+                  <h4 className="mt-4 text-[16px] font-medium">{r.title}</h4>
+                  <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
+                    {r.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 max-w-[60ch] border-l-2 border-accent pl-5 text-[15px] leading-relaxed text-ink">
+              This is the open question we have not solved. Between every shift,
+              a wearer needs somewhere cold. Whether that is a staff room
+              refrigerator, a shared freezer, or nothing at all depends entirely
+              on where they work. We are not going to design around that problem
+              until we know which of them our customers actually have.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="testing" className="border-b border-hairline bg-surface-sunk">
+        <div className="container-page py-[72px] md:py-[112px]">
+          <div className="max-w-[62ch]">
+            <p className="meta">Section 06 / Testing</p>
+            <h2 className="mt-5 text-[28px] font-medium leading-tight tracking-[-0.015em] md:text-[40px]">
+              What we test, and in what order
+            </h2>
+            <p className="mt-6 text-[16px] leading-relaxed text-ink-muted">
+              CoolVest is a concept today. No physical sample has been built,
+              no supplier has been contacted and no test has been run. Rather
+              than publish a specification we cannot yet stand behind, we
+              publish the sequence that has to happen first, because that
+              sequence is what separates a concept from something you can buy.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-px border border-hairline bg-hairline md:grid-cols-2">
+            {TESTS.map((t) => (
+              <div key={t.step} className="bg-surface p-7">
+                <p className="meta">{t.step}</p>
+                <h3 className="mt-4 text-[16px] font-medium">{t.title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
+                  {t.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 max-w-[68ch] border-l-2 border-accent pl-5 text-[15px] leading-relaxed text-ink">
+            Every metric above is fixed before the test runs. A test with no
+            pre-declared metric is not a test, it is an anecdote. We will
+            publish the results, including the ones that go against us.
+          </p>
+        </div>
+      </section>
+
+      <section id="evidence" className="border-b border-hairline bg-surface">
+        <div className="container-page py-[72px] md:py-[112px]">
+          <div className="max-w-[62ch]">
+            <p className="meta">Section 07 / Evidence</p>
+            <h2 className="mt-5 text-[28px] font-medium leading-tight tracking-[-0.015em] md:text-[40px]">
+              What independent testing says about this category
+            </h2>
+            <p className="mt-6 text-[16px] leading-relaxed text-ink-muted">
+              None of this is a measurement of CoolVest. It is what independent
+              research says about cooling vests as a class, including the
+              findings that are bad news for us — because you should have them
+              before you ask us anything.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-px border border-hairline bg-hairline md:grid-cols-2">
+            {TRIALS.map((t) => (
+              <div key={t.finding} className="bg-surface p-7">
+                <h3 className="text-[16px] font-medium">{t.finding}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
+                  {t.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="meta mt-8">Sources</p>
+          <ul className="mt-3 max-w-[68ch] space-y-1.5">
+            {SOURCES.map((s) => (
+              <li key={s} className="text-[13px] leading-relaxed text-ink-faint">
+                {s}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact" className="bg-navy text-white">
+        <div className="container-page py-[72px] md:py-[112px]">
+          <div className="grid gap-14 md:grid-cols-[1fr_1.1fr]">
+            <div>
+              <p className="meta text-white/50">Section 08 / Contact</p>
+              <h2 className="mt-5 text-[28px] font-medium leading-tight tracking-[-0.015em] md:text-[40px]">
+                Tell us how your shifts run.
+              </h2>
+              <p className="mt-6 max-w-[46ch] text-[16px] leading-relaxed text-white/70">
+                At concept stage the honest answer is sometimes &ldquo;not
+                yet&rdquo;. What we can do is take your shift pattern, your site
+                conditions and your reset logistics, and tell you whether this
+                product is worth your time — and when.
+              </p>
+
+              {CONTACT_EMAIL ? (
+                <a
+                  className="mt-8 inline-block rounded-token bg-white px-5 py-2.5 text-[14px] font-medium text-navy transition-colors hover:bg-white/90"
+                  href={`mailto:${CONTACT_EMAIL}`}
+                >
+                  {CONTACT_EMAIL}
+                </a>
+              ) : (
+                <p className="mt-8 max-w-[46ch] border-l-2 border-accent pl-5 text-[14px] leading-relaxed text-white/80">
+                  Build note: no company contact details exist in this project
+                  yet. Add the email or phone number to{" "}
+                  <span className="font-mono">CONTACT_EMAIL</span> before this
+                  page is shown to anyone.
+                </p>
+              )}
+            </div>
+
+            <div>
+              <p className="meta text-white/50">What we need from you</p>
+              <ul className="mt-6 space-y-px border border-white/15 bg-white/15">
+                {SITE_QUESTIONS.map((q) => (
+                  <li
+                    key={q}
+                    className="flex gap-4 bg-navy px-6 py-4 text-[15px] leading-relaxed text-white/80"
+                  >
+                    <span className="meta shrink-0 pt-1 text-white/55">—</span>
+                    {q}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-hairline bg-surface">
+        <div className="container-page flex flex-wrap items-center justify-between gap-4 py-10">
+          <p className="meta">CoolVest — concept stage</p>
+          <p className="meta">No product claims published</p>
+        </div>
+      </footer>
+    </main>
+  );
+}
